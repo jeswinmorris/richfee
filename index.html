@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>RICHFEE Professional Salon & Make-up Studio | Thiruvalla</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="RICHFEE Professional Salon & Make-up Studio in Thiruvalla – expert bridal make-up, hair treatments, skin care, nails and more." />
+  <style>
+    :root {
+      --bg: #050307;
+      --bg-alt: #0d0a13;
+      --accent: #f0b44b;
+      --accent-soft: rgba(240, 180, 75, 0.15);
+      --accent-strong: #ffe0a3;
+      --text: #f7f3ff;
+      --muted: #a99fc4;
+      --card: #151020;
+      --border-subtle: rgba(255,255,255,0.06);
+      --error: #ff4d7a;
+      --success: #44d4a3;
+      --shadow-soft: 0 24px 80px rgba(0,0,0,0.6);
+      --radius-lg: 18px;
+      --radius-xl: 28px;
+      --radius-pill: 999px;
+      --transition-fast: 180ms ease-out;
+      --transition-med: 260ms ease-out;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI", sans-serif;
+      background: radial-gradient(circle at 0 0, #26163a 0, #050307 42%, #050307 100%);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .page {
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 24px 20px 80px;
+    }
+
+    /* Glassy framing */
+    .frame {
+      border-radius: 32px;
+      border: 1px solid rgba(255,255,255,0.06);
+      background: radial-gradient(circle at top left, rgba(240,180,75,0.12) 0, rgba(5,3,7,0.85) 32%, rgba(5,3,7,0.98) 100%);
+      box-shadow: 0 40px 120px rgba(0,0,0,0.75);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .frame::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      background:
+        radial-gradient(circle at 0 0, rgba(240,180,75,0.22), transparent 60%),
+        radial-gradient(circle at 100% 0, rgba(255,255,255,0.06), transparent 55%);
+      mix-blend-mode: screen;
+      opacity: 0.55;
+      pointer-events: none;
+    }
+
+    .frame-inner {
+      position: relative;
+      z-index: 1;
+      padding: 22px 22px 32px;
+    }
+
+    /* Top navigation */
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 6px 10px 10px;
+      border-radius: 24px;
+      background: rgba(6,4,12,0.8);
+      border: 1px solid rgba(255,255,255,0.05);
+      backdrop-filter: blur(22px);
+      position: sticky;
+      top: 10px;
+      z-index: 20;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .brand-mark {
+      width: 32px;
+      height: 32px;
+      border-radius: 14px;
+      border: 1px solid rgba(240,180,75,0.6);
+      background: radial-gradient(circle at 30% 0, rgba(240,180,75,0.85), #2b172b);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand-title {
+      font-size: 16px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+
+    .brand-sub {
+      font-size: 11px;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+    }
+
+    .nav-links a {
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid transparent;
+      transition: border-color var(--transition-fast), color var(--transition-fast), background var(--transition-fast);
+    }
+
+    .nav-links a:hover {
+      border-color: rgba(240,180,75,0.7);
+      color: var(--accent-strong);
+      background: rgba(240,180,75,0.05);
+    }
+
+    .pill-cta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: var(--radius-pill);
+      background: linear-gradient(135deg, var(--accent), #ff5ca8);
+      color: #050307;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      border: 1px solid rgba(255,255,255,0.1);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.6);
+      cursor: pointer;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), filter var(--transition-fast);
+      white-space: nowrap;
+    }
+
+    .pill-cta span.icon {
+      font-size: 14px;
+    }
+
+    .pill-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.7);
+      filter: brightness(1.08);
+    }
+
+    /* Hero section */
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 32px;
+      padding: 26px 4px 12px;
+      align-items: center;
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent-strong);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(240,180,75,0.1);
+      border: 1px solid rgba(240,180,75,0.45);
+    }
+
+    .hero-eyebrow-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: var(--accent);
+      box-shadow: 0 0 0 4px rgba(240,180,75,0.35);
+    }
+
+    .hero-title {
+      margin-top: 14px;
+      font-size: clamp(32px, 4vw, 40px);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-weight: 600;
+      line-height: 1.18;
+    }
+
+    .hero-title span.em {
+      color: var(--accent-strong);
+    }
+
+    .hero-sub {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 14px;
+      max-width: 430px;
+    }
+
+    .hero-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 16px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+    }
+
+    .hero-tags span {
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(12,8,22,0.9);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .hero-secondary {
+      padding: 8px 16px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(10,6,20,0.9);
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .hero-secondary:hover {
+      background: rgba(240,180,75,0.08);
+      border-color: rgba(240,180,75,0.6);
+      color: var(--accent-strong);
+      transform: translateY(-1px);
+    }
+
+    .hero-meta {
+      margin-top: 18px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .hero-meta strong {
+      color: var(--accent-strong);
+      font-weight: 600;
+    }
+
+    .hero-right {
+      position: relative;
+      min-height: 260px;
+    }
+
+    .hero-card {
+      position: relative;
+      border-radius: var(--radius-xl);
+      background: radial-gradient(circle at 0 0, rgba(240,180,75,0.2), #160e26 55%, #060309 100%);
+      border: 1px solid rgba(255,255,255,0.08);
+      padding: 16px;
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+      height: 100%;
+      min-height: 250px;
+    }
+
+    .hero-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 10px;
+    }
+
+    .hero-pill {
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.18);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      background: rgba(10,5,16,0.8);
+    }
+
+    .hero-figure {
+      position: relative;
+      border-radius: 22px;
+      height: 190px;
+      overflow: hidden;
+      margin-block: 8px;
+      background: radial-gradient(circle at 20% 0, #f0b44b 0, #3b1c39 35%, #050307 100%);
+      display: flex;
+      align-items: flex-end;
+      padding: 16px;
+    }
+
+    .hero-figure-overlay {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 10% 0, rgba(255,255,255,0.24), transparent 58%),
+        linear-gradient(to top, rgba(5,3,7,0.9), transparent 45%);
+      mix-blend-mode: soft-light;
+      opacity: 0.9;
+    }
+
+    .hero-figure-copy {
+      position: relative;
+      z-index: 1;
+      max-width: 160px;
+      font-size: 13px;
+    }
+
+    .hero-figure-copy h3 {
+      font-size: 15px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      margin-bottom: 6px;
+    }
+
+    .hero-figure-copy p {
+      font-size: 12px;
+      color: #fce9d5;
+    }
+
+    .hero-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 10px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .hero-card-footer strong {
+      color: var(--accent-strong);
+      font-weight: 600;
+    }
+
+    .status-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 999px;
+      background: var(--success);
+      box-shadow: 0 0 0 4px rgba(68,212,163,0.25);
+    }
+
+    /* Sections */
+    section {
+      margin-top: 32px;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .section-title {
+      font-size: 17px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+    }
+
+    .section-sub {
+      font-size: 12px;
+      color: var(--muted);
+      max-width: 420px;
+    }
+
+    /* Services / Menu */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      border-radius: var(--radius-lg);
+      background: radial-gradient(circle at 0 0, rgba(240,180,75,0.18), var(--card) 50%, #0b0714 100%);
+      border: 1px solid var(--border-subtle);
+      padding: 14px 14px 16px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.6);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 0 0, rgba(240,180,75,0.16), transparent 60%);
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .card-title {
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 0.22em;
+    }
+
+    .card-tag {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--muted);
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(10,6,20,0.9);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .menu-list {
+      list-style: none;
+      margin-top: 6px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .menu-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 10px;
+      padding: 6px 0;
+      border-bottom: 1px dashed rgba(255,255,255,0.08);
+      font-size: 13px;
+    }
+
+    .menu-item:last-child {
+      border-bottom: none;
+    }
+
+    .menu-name {
+      font-weight: 500;
+    }
+
+    .menu-meta {
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .menu-price {
+      font-size: 12px;
+      color: var(--accent-strong);
+      white-space: nowrap;
+    }
+
+    .pill-note {
+      margin-top: 8px;
+      font-size: 11px;
+      color: var(--muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: rgba(10,6,20,0.9);
+      border: 1px dashed rgba(255,255,255,0.16);
+    }
+
+    /* Booking form / WhatsApp */
+    .booking {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 18px;
+    }
+
+    .field-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 10px;
+    }
+
+    label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--muted);
+    }
+
+    input, select, textarea {
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(9,6,18,0.92);
+      padding: 9px 11px;
+      color: var(--text);
+      font-size: 13px;
+      outline: none;
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast), transform var(--transition-fast);
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: rgba(240,180,75,0.8);
+      box-shadow: 0 0 0 1px rgba(240,180,75,0.45);
+      background: rgba(12,8,24,0.98);
+      transform: translateY(-1px);
+    }
+
+    textarea {
+      min-height: 70px;
+      resize: vertical;
+    }
+
+    .booking-footer {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-top: 4px;
+      font-size: 11px;
+      color: var(--muted);
+    }
+
+    .error {
+      color: var(--error);
+      font-size: 11px;
+      margin-top: 4px;
+      min-height: 14px;
+    }
+
+    .success {
+      color: var(--success);
+      font-size: 11px;
+      margin-top: 4px;
+      min-height: 14px;
+    }
+
+    .whatsapp-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(37,211,102,0.8);
+      background: radial-gradient(circle at 0 0, rgba(37,211,102,0.3), rgba(8,16,12,0.9));
+      box-shadow: 0 14px 34px rgba(0,0,0,0.7);
+      color: #e8ffe7;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    .whatsapp-cta span.icon {
+      font-size: 16px;
+    }
+
+    /* Location / map */
+    .map-card {
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-subtle);
+      background: radial-gradient(circle at 0 0, rgba(240,180,75,0.18), #080510 45%, #050307 100%);
+      padding: 10px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.6);
+    }
+
+    .map-card iframe {
+      width: 100%;
+      border: 0;
+      border-radius: 16px;
+      min-height: 220px;
+    }
+
+    .location-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      margin-top: 8px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .location-meta strong {
+      color: var(--accent-strong);
+    }
+
+    /* Footer */
+    .footer {
+      margin-top: 28px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+      font-size: 11px;
+      color: var(--muted);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .footer a {
+      color: var(--accent-strong);
+    }
+
+    /* Responsive */
+    @media (max-width: 900px) {
+      .hero,
+      .grid-2,
+      .booking {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero {
+        padding-top: 20px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .frame-inner {
+        padding: 18px 16px 24px;
+      }
+
+      .page {
+        padding-inline: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <div class="frame">
+      <div class="frame-inner">
+        <!-- NAV -->
+        <header class="nav">
+          <div class="brand">
+            <div class="brand-mark">RF</div>
+            <div class="brand-text">
+              <div class="brand-title">RICHFEE</div>
+              <div class="brand-sub">Professional Salon • Thiruvalla</div>
+            </div>
+          </div>
+          <nav class="nav-links">
+            <a href="#services">Services</a>
+            <a href="#bridal">Bridal</a>
+            <a href="#booking">Book</a>
+            <a href="#location">Location</a>
+          </nav>
+          <button class="pill-cta" onclick="scrollToBooking()">
+            <span class="icon">✦</span>
+            Book slot
+          </button>
+        </header>
+
+        <!-- HERO -->
+        <section class="hero" id="top">
+          <div>
+            <div class="hero-eyebrow">
+              <span class="hero-eyebrow-dot"></span>
+              Since 2008 • 18+ years of excellence
+            </div>
+            <h1 class="hero-title">
+              Luxury salon & bridal artistry, from <span class="em">Thiruvalla</span> with care.
+            </h1>
+            <p class="hero-sub">
+              RICHFEE Professional Salon & Make-up Studio brings studio‑grade bridal make-up, advanced hair treatments and skin rituals together, in a warm, detail‑obsessed space.
+            </p>
+            <div class="hero-tags">
+              <span>Bridal studio</span>
+              <span>Hair & skin care</span>
+              <span>Signature treatments</span>
+            </div>
+            <div class="hero-actions">
+              <button class="pill-cta" onclick="scrollToBooking()">
+                <span class="icon">💬</span>
+                WhatsApp booking
+              </button>
+              <button class="hero-secondary" onclick="scrollToServices()">
+                View full menu
+                <span>↓</span>
+              </button>
+            </div>
+            <div class="hero-meta">
+              <div><strong>Thiruvalla</strong> • Near Chilanka Junction</div>
+              <div><strong>Call / WhatsApp:</strong> +91 99474 17620</div>
+            </div>
+          </div>
+
+          <div class="hero-right">
+            <div class="hero-card">
+              <div class="hero-card-header">
+                <div class="hero-pill">
+                  <span class="status-dot"></span>
+                  Today • Limited premium slots
+                </div>
+                <div>Bridal | Hair | Skin</div>
+              </div>
+              <div class="hero-figure">
+                <div class="hero-figure-overlay"></div>
+                <div class="hero-figure-copy">
+                  <h3>Signature bridal looks</h3>
+                  <p>
+                    Camera‑ready makeup, handcrafted hair styling and draping that feels light, timeless and perfectly you.
+                  </p>
+                </div>
+              </div>
+              <div class="hero-card-footer">
+                <div>
+                  <strong>Experts in:</strong> Keratin, Botox, Smoothing, Nanoplastia
+                </div>
+                <div>By appointment • Tuesday–Sunday</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- SERVICES / MENU -->
+        <section id="services">
+          <div class="section-header">
+            <div>
+              <h2 class="section-title">Salon menu</h2>
+              <p class="section-sub">
+                Explore a curated menu of hair, skin, makeup and nail services. Pricing stays transparent and pocket‑friendly while we keep the finish premium.
+              </p>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <!-- Hair menu -->
+            <article class="card">
+              <div class="card-header">
+                <h3 class="card-title">Hair rituals</h3>
+                <span class="card-tag">Cut • Treat • Style</span>
+              </div>
+              <ul class="menu-list">
+                <li class="menu-item">
+                  <div>
+                    <div class="menu-name">Hair cut & professional finish</div>
+                    <div class="menu-meta">Women • Consultation, wash & blow‑dry</div>
+                  </div>
+                  <span class="menu-price">from ₹350*</span>
+                </li>
+                <li class="menu-item">
+                  <div>
+                    <div class="menu-name">Hair spa</div>
+                    <div class="menu-meta">Relaxing cleanse, mask & massage</div>
+                  </div>
+                  <span class="menu-price">from ₹599*</span>
+                </li>
+                <li class="menu-item">
+                  <div>
+                    <div class="menu-name">Keratin treatment</div>
+                    <div class="menu-meta">Frizz‑control, shine & smoothness</div>
+                  </div>
+                  <span class="menu-price">from ₹1,999*</span>
+                </li>
+                <li class="menu-item">
+                  <div>
+                    <div class="menu-name">Hair Botox</div>
+                    <div class="menu-meta">Intense repair for dull, damaged hair</div>
+                  </div>
+                  <span class="menu-price">from ₹2,999*</span>
+                </li>
+                <li class="menu-item">
+                  <div>
+                    <div class="menu-name">Smoothing / Straightening</div>
+                    <div class="menu-meta">Soft, manageable hair with mirror shine</div>
+                  </div>
+                  <span class="menu-price">ask stylist</span>
+                </li>
+                <li class="menu-item">
+                  <div>
+                    <div class="menu-name">Nanoplastia / Protein treatment</div>
+                    <div class="menu-meta">Advanced hair reconstruction rituals</div>
+                  </div>
+                  <span class="menu-price">ask stylist</span>
+                </li>
+                <li class="menu-item">
+                  <div>
+                    <div class="menu-name">Global hair colour / Highlights</div>
+                    <div class="menu-meta">Custom shades & face‑framing lights</div>
+                  </div>
+                  <span class="menu-price">on consultation</span>
+                </li>
+              </ul>
+              <div class="pill-note">
+                *Indicative starting prices. Exact quote shared after in‑person hair analysis.
+              </div>
+            </article>
+
+            <!-- Skin & essentials -->
+            <article class="card">
+              <div class="card-header">
+                <h3 class="card-title">Skin • Waxing • Brows</h3>
+                <span class="card-tag">Glow & grooming</span>
+              </div>
+              <ul class="menu-list">
+                <li class="menu-item">
+                  <div>
+                    <div class="menu-name">Express clean‑up</div>
+                    <div class="menu-meta">Quick refresh before an event</div>
+                  </div>
+                  <span class="menu-price">ask in‑salon</span>
+                </li>
+                <li class="menu-item">
+                  <div>
+                    <div class="menu-name">Signature facials</div>
+                    <div class="menu-meta">Hydrating, brightening & anti‑ageing options</div>
+                  </div>
+                  <span class="menu-price">on consultation</span>
+                </li>
+                <li class="menu-item">
+                  <div>
+                    <div class="menu-name">Full body waxing</div>
+                    <div class="menu-meta">Soft, smooth finish with care</div>
+                  </div>
+                  <span class="menu-price">package pricing</span>
+                </li>
+                <li class="menu-item">
+                  <div>
+                    <div class="menu-name">Arms / Legs / Underarms</div>
+                    <div class="menu-meta">Combo options available</div>
+                  </div>
+                  <span class="menu-price">ask at desk</span>
+                </li>
+                <li class="menu-item">
+                  <div>
+                    <div class="menu-name">Threading & brows</div>
+                    <div class="menu-meta">Eyebrow shaping, upperlip & sides</div>
+                  </div>
+                  <span class="menu-price">from basic</span>
+                </li>
+                <li class="menu-item">
+                  <div>
+                    <div class="menu-name">Detan & body polish</div>
+                    <div class="menu-meta">Pre‑bridal & special occasion prep</div>
+                  </div>
+                  <span class="menu-price">custom</span>
+                </li>
+              </ul>
+              <div class="pill-note">
+                Tell us your skin concerns on WhatsApp, and we’ll recommend a tailored facial plan.
+              </div>
+            </article>
+          </div>
+
+          <div class="grid-2" style="margin-top: 18px;">
+            <!-- Makeup & bridal -->
+            <article class="card" id="bridal">
+              <div class="card-header">
+                <h3 class="card-title">Make-up artistry</h3>
+                <span class="card-tag">Bridal • Party • HD</span>
+              </div>
+              <ul class="menu-list">
+                <li class="menu-item">
+                  <div>
+                    <div class="menu-name">Bridal make-up (in‑studio)</div>
+                    <div class="menu-meta">HD / Airbrush options, lashes, basic hairstyling</div>
+                  </div>
+                  <span class="menu-price">on trial & consult</span>
+                </li>
+                <li class="menu-item">
+                  <div>
+                    <div class="menu-name">Engagement / Reception look</div>
+                    <div class="menu-meta">Customised glam to match outfit & lighting</div>
+                  </div>
+                  <span class="menu-price">per event</span>
+                </li>
+                <li class="menu-item">
+                  <div>
+                    <div class="menu-name">Pre‑wedding functions</div>
+                    <div class="menu-meta">Haldi, Mehendi, Sangeet, cocktail looks</div>
+                  </div>
+                  <span class="menu-price">bundle plans</span>
+                </li>
+                <li class="menu-item">
+                  <div>
+                    <div class="menu-name">Party / Occasion make‑up</div>
+                    <div class="menu-meta">Soft glam, corporate events & shoots</div>
+                  </div>
+                  <span class="menu-price">per look</span>
+                </li>
+                <li class="menu-item">
+                  <div>
+                    <div class="menu-name">On‑location bridal bookings</div>
+                    <div class="menu-meta">For wedding venues & destination ceremonies</div>
+                  </div>
+                  <span class="menu-price">by advance booking</span>
+                </li>
+              </ul>
+              <div class="pill-note">
+                Bridal slots are limited. Share your wedding date & venue on WhatsApp to lock your artist.
+              </div>
+            </article>
+
+            <!-- Hands • Feet • Add‑ons -->
+            <article class="card">
+              <div class="card-header">
+                <h3 class="card-title">Hands • feet • extras</h3>
+                <span class="card-tag">Finish & detail</span>
+              </div>
+              <ul class="menu-list">
+                <li class="menu-item">
+                  <div>
+                    <div class="menu-name">Manicure / Pedicure</div>
+                    <div class="menu-meta">Classic, spa & bridal options</div>
+                  </div>
+                  <span class="menu-price">from basic</span>
+                </li>
+                <li class="menu-item">
+                  <div>
+                    <div class="menu-name">Nail colour & art</div>
+                    <div class="menu-meta">Nude, French, chrome & custom looks</div>
+                  </div>
+                  <span class="menu-price">ask nail bar</span>
+                </li>
+                <li class="menu-item">
+                  <div>
+                    <div class="menu-name">Hair styling add‑ons</div>
+                    <div class="menu-meta">Curls, waves, braids & buns</div>
+                  </div>
+                  <span class="menu-price">per style</span>
+                </li>
+                <li class="menu-item">
+                  <div>
+                    <div class="menu-name">Draping services</div>
+                    <div class="menu-meta">Saree & dupatta draping for events</div>
+                  </div>
+                  <span class="menu-price">bridal & non‑bridal</span>
+                </li>
+              </ul>
+              <div class="pill-note">
+                Build your own combo for pre‑wedding and photoshoot days. Ask us for customised packages.
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- BOOKING / WHATSAPP FORM -->
+        <section id="booking">
+          <div class="section-header">
+            <div>
+              <h2 class="section-title">Book your slot</h2>
+              <p class="section-sub">
+                Share a few details, and we’ll open WhatsApp with your booking message ready to send to the salon team.
+              </p>
+            </div>
+          </div>
+
+          <div class="booking">
+            <!-- Form -->
+            <article class="card">
+              <form id="bookingForm" onsubmit="handleBooking(event)">
+                <div class="grid-2" style="gap: 10px;">
+                  <div class="field-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" placeholder="Your full name" required />
+                  </div>
+                  <div class="field-group">
+                    <label for="phone">Phone</label>
+                    <input type="tel" id="phone" placeholder="+91…" required />
+                  </div>
+                </div>
+
+                <div class="grid-2" style="gap: 10px;">
+                  <div class="field-group">
+                    <label for="date">Preferred date</label>
+                    <input type="date" id="date" required />
+                  </div>
+                  <div class="field-group">
+                    <label for="time">Preferred time</label>
+                    <input type="time" id="time" required />
+                  </div>
+                </div>
+
+                <div class="field-group">
+                  <label for="service">Service</label>
+                  <select id="service" required>
+                    <option value="">Select a service</option>
+                    <option value="Hair cut & finish">Hair cut & finish</option>
+                    <option value="Hair spa">Hair spa</option>
+                    <option value="Keratin / Botox / Smoothing">Keratin / Botox / Smoothing</option>
+                    <option value="Hair colour / Highlights">Hair colour / Highlights</option>
+                    <option value="Facial / Skin ritual">Facial / Skin ritual</option>
+                    <option value="Waxing / Detan">Waxing / Detan</option>
+                    <option value="Manicure / Pedicure">Manicure / Pedicure</option>
+                    <option value="Party make-up">Party make-up</option>
+                    <option value="Bridal make-up (studio)">Bridal make-up (studio)</option>
+                    <option value="On-location bridal booking">On-location bridal booking</option>
+                    <option value="Custom package">Custom package</option>
+                  </select>
+                </div>
+
+                <div class="field-group">
+                  <label for="notes">Notes</label>
+                  <textarea id="notes" placeholder="Share hair/skin concerns, event details, or number of people…"></textarea>
+                </div>
+
+                <div class="booking-footer">
+                  <button type="submit" class="pill-cta">
+                    <span class="icon">💬</span>
+                    Send to WhatsApp
+                  </button>
+                  <div>
+                    Your request opens directly in WhatsApp to <strong>+91 99474 17620</strong> – the team will confirm timing and prices.
+                  </div>
+                </div>
+
+                <div id="formError" class="error"></div>
+                <div id="formSuccess" class="success"></div>
+              </form>
+            </article>
+
+            <!-- Info / quick contact -->
+            <article class="card">
+              <div class="card-header">
+                <h3 class="card-title">Quick contact</h3>
+                <span class="card-tag">Text • Call • Visit</span>
+              </div>
+              <div style="position: relative; z-index: 1; font-size: 13px; color: var(--muted); display: flex; flex-direction: column; gap: 10px;">
+                <div>
+                  <strong style="color: var(--accent-strong);">Call / WhatsApp</strong><br />
+                  +91 99474 17620
+                </div>
+                <div>
+                  <strong style="color: var(--accent-strong);">Address</strong><br />
+                  RICHFEE Professional Salon &amp; Make-up Studio<br />
+                  Thiruvalla, Kerala 689101<br />
+                  (Near Chilanka Junction)
+                </div>
+                <div>
+                  <strong style="color: var(--accent-strong);">Timings</strong><br />
+                  Tuesday – Sunday<br />
+                  10:00 am – 7:00 pm (approx.)<br />
+                  Closed on Mondays or as updated on social media.
+                </div>
+                <div>
+                  For latest offers and transformations, follow on Instagram:
+                  <br />
+                  <a href="https://www.instagram.com/richfe_saloon/" target="_blank" rel="noopener"> @richfe_saloon</a>
+                </div>
+                <div class="whatsapp-cta" onclick="openWhatsAppDirect()">
+                  <span class="icon">🟢</span>
+                  Chat now on WhatsApp
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- LOCATION / MAP -->
+        <section id="location">
+          <div class="section-header">
+            <div>
+              <h2 class="section-title">Find the studio</h2>
+              <p class="section-sub">
+                Centrally located in Thiruvalla, close to Chilanka Theatre and Market Junction, with easy access for bridal parties and families.
+              </p>
+            </div>
+          </div>
+
+          <div class="grid-2">
+            <article class="map-card">
+              <!-- Replace src with your actual Google Maps embed URL -->
+              <iframe
+                src="YOUR_GOOGLE_MAPS_EMBED_URL"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+              <div class="location-meta">
+                <div><strong>Landmark:</strong> Near Chilanka Junction, Thiruvalla.</div>
+                <div><strong>Parking:</strong> Nearby street/area parking as available.</div>
+              </div>
+            </article>
+
+            <article class="card">
+              <div class="card-header">
+                <h3 class="card-title">Plan your visit</h3>
+                <span class="card-tag">Arrive relaxed</span>
+              </div>
+              <div style="position: relative; z-index: 1; font-size: 13px; color: var(--muted); display: flex; flex-direction: column; gap: 10px;">
+                <p>
+                  Arrive 10–15 minutes early for bridal and hair treatments so we can walk you through options, check your outfit and finalise your look calmly.
+                </p>
+                <p>
+                  For keratin, Botox, smoothing and colour services, please share your hair history (past treatments & colours) on WhatsApp so we can recommend the safest, most effective ritual.
+                </p>
+                <p>
+                  Have a destination wedding or back‑to‑back functions? Ask for multi‑day bridal packages and travel availability before blocking your dates.
+                </p>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+          <div>© <span id="year"></span> RICHFEE Professional Salon &amp; Make-up Studio, Thiruvalla.</div>
+          <div>Designed &amp; developed for a modern, minimal luxury experience.</div>
+        </footer>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function scrollToBooking() {
+      const el = document.getElementById("booking");
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    }
+
+    function scrollToServices() {
+      const el = document.getElementById("services");
+      if (el) el.scrollIntoView({ behavior: "smooth" });
+    }
+
+    function getWhatsAppBaseNumber() {
+      // Salon contact number (no spaces, country code added)
+      return "919947417620";
+    }
+
+    function handleBooking(event) {
+      event.preventDefault();
+      const errorEl = document.getElementById("formError");
+      const successEl = document.getElementById("formSuccess");
+      errorEl.textContent = "";
+      successEl.textContent = "";
+
+      const name = document.getElementById("name").value.trim();
+      const phone = document.getElementById("phone").value.trim();
+      const date = document.getElementById("date").value;
+      const time = document.getElementById("time").value;
+      const service = document.getElementById("service").value;
+      const notes = document.getElementById("notes").value.trim();
+
+      if (!name || !phone || !date || !time || !service) {
+        errorEl.textContent = "Please fill in all required fields to send your booking.";
+        return;
+      }
+
+      const messageLines = [
+        "Hi RICHFEE team, I’d like to book a slot:",
+        "",
+        "Name: " + name,
+        "Phone: " + phone,
+        "Preferred date: " + date,
+        "Preferred time: " + time,
+        "Service: " + service,
+        notes ? "Notes: " + notes : "",
+        "",
+        "Sent from the website booking form."
+      ].filter(Boolean);
+
+      const message = encodeURIComponent(messageLines.join("\\n"));
+      const phoneNumber = getWhatsAppBaseNumber();
+      const url = "https://wa.me/" + phoneNumber + "?text=" + message;
+
+      window.open(url, "_blank");
+      successEl.textContent = "Opening WhatsApp… if it doesn’t open, please check pop‑up settings.";
+    }
+
+    function openWhatsAppDirect() {
+      const phoneNumber = getWhatsAppBaseNumber();
+      const message = encodeURIComponent("Hi RICHFEE team, I’d like to know about today’s available slots and services.");
+      const url = "https://wa.me/" + phoneNumber + "?text=" + message;
+      window.open(url, "_blank");
+    }
+
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
