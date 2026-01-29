@@ -10,7 +10,7 @@
       --bg: #050307;
       --bg-alt: #0d0a13;
       --accent: #f0b44b;
-      --accent-soft: rgba(240, 180, 75, 0.15);
+      --accent-soft: rgba(240,180,75,0.15);
       --accent-strong: #ffe0a3;
       --text: #f7f3ff;
       --muted: #a99fc4;
@@ -53,10 +53,9 @@
     .page {
       max-width: 1180px;
       margin: 0 auto;
-      padding: 24px 20px 80px;
+      padding: 18px 16px 72px;
     }
 
-    /* Glassy framing */
     .frame {
       border-radius: 32px;
       border: 1px solid rgba(255,255,255,0.06);
@@ -81,10 +80,10 @@
     .frame-inner {
       position: relative;
       z-index: 1;
-      padding: 22px 22px 32px;
+      padding: 18px 18px 28px;
     }
 
-    /* Top navigation */
+    /* NAVBAR */
     .nav {
       display: flex;
       align-items: center;
@@ -97,13 +96,15 @@
       backdrop-filter: blur(22px);
       position: sticky;
       top: 10px;
-      z-index: 20;
+      z-index: 30;
+      flex-wrap: nowrap;
     }
 
     .brand {
       display: flex;
       align-items: center;
       gap: 10px;
+      min-width: 0;
     }
 
     .brand-mark {
@@ -120,12 +121,14 @@
       letter-spacing: 0.09em;
       text-transform: uppercase;
       box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+      flex-shrink: 0;
     }
 
     .brand-text {
       display: flex;
       flex-direction: column;
       gap: 2px;
+      min-width: 0;
     }
 
     .brand-title {
@@ -133,6 +136,7 @@
       letter-spacing: 0.12em;
       text-transform: uppercase;
       font-weight: 600;
+      white-space: nowrap;
     }
 
     .brand-sub {
@@ -140,6 +144,17 @@
       color: var(--muted);
       text-transform: uppercase;
       letter-spacing: 0.16em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .nav-center {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex: 1;
+      justify-content: center;
     }
 
     .nav-links {
@@ -157,6 +172,7 @@
       border-radius: 999px;
       border: 1px solid transparent;
       transition: border-color var(--transition-fast), color var(--transition-fast), background var(--transition-fast);
+      white-space: nowrap;
     }
 
     .nav-links a:hover {
@@ -166,10 +182,10 @@
     }
 
     .pill-cta {
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 6px 12px;
+      padding: 7px 14px;
       border-radius: var(--radius-pill);
       background: linear-gradient(135deg, var(--accent), #ff5ca8);
       color: #050307;
@@ -194,12 +210,68 @@
       filter: brightness(1.08);
     }
 
-    /* Hero section */
+    /* Mobile nav toggle */
+    .nav-toggle {
+      display: none;
+      background: none;
+      border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 999px;
+      padding: 6px 10px;
+      color: var(--muted);
+      cursor: pointer;
+      font-size: 12px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .nav-toggle span.icon {
+      font-size: 16px;
+    }
+
+    .nav-mobile-menu {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      margin-top: 10px;
+      padding: 10px 10px 4px;
+      border-radius: 18px;
+      background: rgba(5,3,10,0.96);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .nav-mobile-menu a {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      padding: 7px 10px;
+      border-radius: 999px;
+      color: var(--muted);
+      border: 1px solid transparent;
+    }
+
+    .nav-mobile-menu a:hover {
+      border-color: rgba(240,180,75,0.7);
+      color: var(--accent-strong);
+      background: rgba(240,180,75,0.05);
+    }
+
+    .nav-mobile-menu.show {
+      display: flex;
+    }
+
+    /* make the book button a named element to move on mobile */
+    .nav-book-cta {
+      /* desktop: sits inline */
+    }
+
+    /* HERO */
     .hero {
       display: grid;
       grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
       gap: 32px;
-      padding: 26px 4px 12px;
+      padding: 22px 4px 10px;
       align-items: center;
     }
 
@@ -227,7 +299,7 @@
 
     .hero-title {
       margin-top: 14px;
-      font-size: clamp(32px, 4vw, 40px);
+      font-size: clamp(30px, 4.4vw, 40px);
       letter-spacing: 0.08em;
       text-transform: uppercase;
       font-weight: 600;
@@ -267,7 +339,7 @@
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      margin-top: 20px;
+      margin-top: 18px;
     }
 
     .hero-secondary {
@@ -294,10 +366,10 @@
     }
 
     .hero-meta {
-      margin-top: 18px;
+      margin-top: 16px;
       display: flex;
       flex-wrap: wrap;
-      gap: 18px;
+      gap: 16px;
       font-size: 11px;
       color: var(--muted);
     }
@@ -309,7 +381,7 @@
 
     .hero-right {
       position: relative;
-      min-height: 260px;
+      min-height: 250px;
     }
 
     .hero-card {
@@ -321,7 +393,7 @@
       box-shadow: var(--shadow-soft);
       overflow: hidden;
       height: 100%;
-      min-height: 250px;
+      min-height: 240px;
     }
 
     .hero-card-header {
@@ -331,6 +403,7 @@
       font-size: 11px;
       color: var(--muted);
       margin-bottom: 10px;
+      gap: 12px;
     }
 
     .hero-pill {
@@ -344,6 +417,7 @@
       text-transform: uppercase;
       letter-spacing: 0.16em;
       background: rgba(10,5,16,0.8);
+      white-space: nowrap;
     }
 
     .hero-figure {
@@ -394,6 +468,8 @@
       margin-top: 10px;
       font-size: 11px;
       color: var(--muted);
+      gap: 10px;
+      flex-wrap: wrap;
     }
 
     .hero-card-footer strong {
@@ -411,7 +487,7 @@
 
     /* Sections */
     section {
-      margin-top: 32px;
+      margin-top: 28px;
     }
 
     .section-header {
@@ -420,6 +496,7 @@
       align-items: baseline;
       gap: 12px;
       margin-bottom: 16px;
+      flex-wrap: wrap;
     }
 
     .section-title {
@@ -434,7 +511,7 @@
       max-width: 420px;
     }
 
-    /* Services / Menu */
+    /* Layout grids */
     .grid-2 {
       display: grid;
       grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
@@ -485,6 +562,7 @@
       border-radius: 999px;
       background: rgba(10,6,20,0.9);
       border: 1px solid rgba(255,255,255,0.08);
+      white-space: nowrap;
     }
 
     .menu-list {
@@ -534,9 +612,11 @@
       border-radius: 999px;
       background: rgba(10,6,20,0.9);
       border: 1px dashed rgba(255,255,255,0.16);
+      position: relative;
+      z-index: 1;
     }
 
-    /* Booking form / WhatsApp */
+    /* Booking form */
     .booking {
       display: grid;
       grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
@@ -566,6 +646,7 @@
       font-size: 13px;
       outline: none;
       transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast), transform var(--transition-fast);
+      width: 100%;
     }
 
     input:focus, select:focus, textarea:focus {
@@ -589,6 +670,12 @@
       margin-top: 4px;
       font-size: 11px;
       color: var(--muted);
+      position: relative;
+      z-index: 1;
+    }
+
+    .booking-footer strong {
+      color: var(--accent-strong);
     }
 
     .error {
@@ -596,6 +683,8 @@
       font-size: 11px;
       margin-top: 4px;
       min-height: 14px;
+      position: relative;
+      z-index: 1;
     }
 
     .success {
@@ -603,6 +692,8 @@
       font-size: 11px;
       margin-top: 4px;
       min-height: 14px;
+      position: relative;
+      z-index: 1;
     }
 
     .whatsapp-cta {
@@ -618,13 +709,16 @@
       font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 0.16em;
+      cursor: pointer;
+      position: relative;
+      z-index: 1;
     }
 
     .whatsapp-cta span.icon {
       font-size: 16px;
     }
 
-    /* Location / map */
+    /* Map / location */
     .map-card {
       border-radius: var(--radius-lg);
       border: 1px solid var(--border-subtle);
@@ -653,9 +747,20 @@
       color: var(--accent-strong);
     }
 
+    .map-link {
+      margin-top: 6px;
+      font-size: 12px;
+    }
+
+    .map-link a {
+      color: var(--accent-strong);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
     /* Footer */
     .footer {
-      margin-top: 28px;
+      margin-top: 24px;
       padding-top: 14px;
       border-top: 1px solid rgba(255,255,255,0.06);
       font-size: 11px;
@@ -670,7 +775,7 @@
       color: var(--accent-strong);
     }
 
-    /* Responsive */
+    /* RESPONSIVE */
     @media (max-width: 900px) {
       .hero,
       .grid-2,
@@ -679,21 +784,68 @@
       }
 
       .hero {
-        padding-top: 20px;
+        padding-top: 18px;
+      }
+
+      .hero-right {
+        order: -1;
+      }
+
+      .hero-sub {
+        max-width: none;
+      }
+
+      .nav {
+        flex-wrap: wrap;
+        row-gap: 8px;
+      }
+
+      .brand {
+        flex: 1 1 100%;
+      }
+
+      .nav-center {
+        display: none;
       }
 
       .nav-links {
         display: none;
       }
-    }
 
-    @media (max-width: 600px) {
+      .nav-book-cta {
+        order: 2;
+        flex: 1 1 auto;
+      }
+
+      .nav-toggle {
+        display: inline-flex;
+        order: 3;
+      }
+
       .frame-inner {
-        padding: 18px 16px 24px;
+        padding-inline: 14px;
       }
 
       .page {
         padding-inline: 14px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero-title {
+        letter-spacing: 0.06em;
+      }
+
+      .card {
+        padding-inline: 12px;
+      }
+
+      .map-card iframe {
+        min-height: 200px;
+      }
+
+      .hero-card {
+        min-height: 220px;
       }
     }
   </style>
@@ -711,30 +863,48 @@
               <div class="brand-sub">Professional Salon • Thiruvalla</div>
             </div>
           </div>
-          <nav class="nav-links">
-            <a href="#services">Services</a>
-            <a href="#bridal">Bridal</a>
-            <a href="#booking">Book</a>
-            <a href="#location">Location</a>
-          </nav>
-          <button class="pill-cta" onclick="scrollToBooking()">
+
+          <!-- book button comes right after brand so it can drop below on mobile -->
+          <button class="pill-cta nav-book-cta" onclick="scrollToBooking()">
             <span class="icon">✦</span>
             Book slot
           </button>
+
+          <div class="nav-center">
+            <nav class="nav-links">
+              <a href="#services">Services</a>
+              <a href="#bridal">Bridal</a>
+              <a href="#booking">Book</a>
+              <a href="#location">Location</a>
+            </nav>
+          </div>
+
+          <button class="nav-toggle" type="button" onclick="toggleMobileNav()">
+            <span class="icon">☰</span>
+            Menu
+          </button>
         </header>
+
+        <!-- Mobile dropdown -->
+        <nav id="navMobileMenu" class="nav-mobile-menu">
+          <a href="#services" onclick="closeMobileNav()">Services</a>
+          <a href="#bridal" onclick="closeMobileNav()">Bridal</a>
+          <a href="#booking" onclick="closeMobileNav()">Book</a>
+          <a href="#location" onclick="closeMobileNav()">Location</a>
+        </nav>
 
         <!-- HERO -->
         <section class="hero" id="top">
           <div>
             <div class="hero-eyebrow">
               <span class="hero-eyebrow-dot"></span>
-              Since 2008 • 18+ years of excellence
+              Since 2017 • 8+ years of excellence
             </div>
             <h1 class="hero-title">
               Luxury salon & bridal artistry, from <span class="em">Thiruvalla</span> with care.
             </h1>
             <p class="hero-sub">
-              RICHFEE Professional Salon & Make-up Studio brings studio‑grade bridal make-up, advanced hair treatments and skin rituals together, in a warm, detail‑obsessed space.
+              RICHFEE Professional Salon & Make-up Studio brings studio‑grade bridal make-up, advanced hair treatments and skin rituals together, in a warm, detail‑obsessed space near Chilanka Theatre, Market Junction.
             </p>
             <div class="hero-tags">
               <span>Bridal studio</span>
@@ -752,7 +922,7 @@
               </button>
             </div>
             <div class="hero-meta">
-              <div><strong>Thiruvalla</strong> • Near Chilanka Junction</div>
+              <div><strong>Location:</strong> Near Chilanka Theatre, Market Junction, Thiruvalla‑689101</div>
               <div><strong>Call / WhatsApp:</strong> +91 99474 17620</div>
             </div>
           </div>
@@ -779,7 +949,7 @@
                 <div>
                   <strong>Experts in:</strong> Keratin, Botox, Smoothing, Nanoplastia
                 </div>
-                <div>By appointment • Tuesday–Sunday</div>
+                <div>Open 9:30 am – 6:00 pm • Monday to Saturday</div>
               </div>
             </div>
           </div>
@@ -1096,14 +1266,13 @@
                 <div>
                   <strong style="color: var(--accent-strong);">Address</strong><br />
                   RICHFEE Professional Salon &amp; Make-up Studio<br />
-                  Thiruvalla, Kerala 689101<br />
-                  (Near Chilanka Junction)
+                  Near Chilanka Theatre, Chilanka Junction,<br />
+                  Market Junction, Thiruvalla‑689101, Kerala
                 </div>
                 <div>
                   <strong style="color: var(--accent-strong);">Timings</strong><br />
-                  Tuesday – Sunday<br />
-                  10:00 am – 7:00 pm (approx.)<br />
-                  Closed on Mondays or as updated on social media.
+                  Monday – Saturday: 9:30 am – 6:00 pm<br />
+                  Sunday: Closed
                 </div>
                 <div>
                   For latest offers and transformations, follow on Instagram:
@@ -1132,15 +1301,20 @@
 
           <div class="grid-2">
             <article class="map-card">
-              <!-- Replace src with your actual Google Maps embed URL -->
+              <!-- You can tweak the embed URL if needed -->
               <iframe
-                src="YOUR_GOOGLE_MAPS_EMBED_URL"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3924.400212893959!2d76.573851!3d9.389424!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b06246c32784843%3A0x8da14603d74fc3c9!2sRICHFEE%20Professional%20Salon%20%26%20Make-up%20Studio!5e0!3m2!1sen!2sin!4v1700000000000"
                 loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"
               ></iframe>
               <div class="location-meta">
-                <div><strong>Landmark:</strong> Near Chilanka Junction, Thiruvalla.</div>
+                <div><strong>Landmark:</strong> Near Chilanka Theatre, Chilanka Junction, Market Junction, Thiruvalla.</div>
                 <div><strong>Parking:</strong> Nearby street/area parking as available.</div>
+              </div>
+              <div class="map-link">
+                <a href="https://maps.app.goo.gl/afXaH2SRw4iMy8Tr6" target="_blank" rel="noopener">
+                  Open in Google Maps
+                </a>
               </div>
             </article>
 
@@ -1184,8 +1358,17 @@
       if (el) el.scrollIntoView({ behavior: "smooth" });
     }
 
+    function toggleMobileNav() {
+      const menu = document.getElementById("navMobileMenu");
+      menu.classList.toggle("show");
+    }
+
+    function closeMobileNav() {
+      const menu = document.getElementById("navMobileMenu");
+      menu.classList.remove("show");
+    }
+
     function getWhatsAppBaseNumber() {
-      // Salon contact number (no spaces, country code added)
       return "919947417620";
     }
 
@@ -1221,7 +1404,7 @@
         "Sent from the website booking form."
       ].filter(Boolean);
 
-      const message = encodeURIComponent(messageLines.join("\\n"));
+      const message = encodeURIComponent(messageLines.join("\n"));
       const phoneNumber = getWhatsAppBaseNumber();
       const url = "https://wa.me/" + phoneNumber + "?text=" + message;
 
